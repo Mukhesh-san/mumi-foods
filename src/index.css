@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+Pro:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased bg-white relative min-h-screen;
+  }
+
+  /* Primary texture pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background: 
+      linear-gradient(45deg, rgba(6, 78, 59, 0.05) 25%, transparent 25%) -10px 0,
+      linear-gradient(-45deg, rgba(6, 78, 59, 0.05) 25%, transparent 25%) -10px 0,
+      linear-gradient(45deg, transparent 75%, rgba(6, 78, 59, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(6, 78, 59, 0.05) 75%);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+
+  /* Secondary organic texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+      linear-gradient(to right bottom, rgba(6, 78, 59, 0.03), rgba(6, 78, 59, 0.06));
+    pointer-events: none;
+  }
+
+  /* Radial gradient overlay */
+  body > div:first-child::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(255, 255, 255, 0.8) 20%, 
+      rgba(255, 255, 255, 0.6) 50%, 
+      rgba(255, 255, 255, 0.4) 100%
+    );
+    pointer-events: none;
+  }
+
+  section {
+    @apply relative overflow-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  p, a, button, input, textarea {
+    font-family: 'Source Serif Pro', serif;
+  }
+}
+
+/* Animation classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
